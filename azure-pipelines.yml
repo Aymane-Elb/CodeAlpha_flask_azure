@@ -16,6 +16,6 @@ steps:
     command: buildAndPush
     repository: $(imageRepository)
     dockerfile: $(dockerfilePath)
-    containerRegistry: 'codealpha-acr-connection'
+    containerRegistry: 'codealpha-acr-sp'
     tags: |
       $(tag)
