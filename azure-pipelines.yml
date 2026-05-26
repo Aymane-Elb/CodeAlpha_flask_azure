@@ -1,0 +1,21 @@
+trigger:
+- main
+
+variables:
+  imageRepository: 'my-first-azure-app'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: 'latest'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  displayName: Build and push Docker image to ACR
+  inputs:
+    command: buildAndPush
+    repository: $(imageRepository)
+    dockerfile: $(dockerfilePath)
+    containerRegistry: 'codealpha-acr-sp'
+    tags: |
+      $(tag)
